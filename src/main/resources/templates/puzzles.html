@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Puzzle App</title>
+    <script src="https://cdn.jsdelivr.net/npm/interactjs@1.10.11/dist/interact.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h1>Puzzles</h1>
+<h2 id="message"></h2>
+<div id="puzzle-container" th:style="'width:' + (${width}*0.5) + 'px; height:' + (${height}*0.5) + 'px;'">
+    <img class="puzzle-image" th:each="puzzle : ${puzzles}" th:src="@{/image/{filename}(filename=${puzzle})}" alt="puzzle piece"/>
+</div>
+<button onclick="submitImageInfo()">Submit</button>
+<script src="/script.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var numPuzzlePieces = /*[[${puzzles.size()}]]*/ 0;
+    console.log(numPuzzlePieces);
+
+    // Calculate the number of columns and rows
+    var numCols = Math.floor(Math.sqrt(numPuzzlePieces));
+    var numRows = Math.floor(numPuzzlePieces / numCols);
+
+    // Set the grid template columns and rows dynamically
+    var puzzleContainer = document.getElementById("puzzle-container");
+    puzzleContainer.style.gridTemplateColumns = "repeat(" + numCols + ", 1fr)";
+    puzzleContainer.style.gridTemplateRows = "repeat(" + numRows + ", 1fr)";
+    /*]]>*/
+</script>
+</body>
+</html>
