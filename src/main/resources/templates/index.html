@@ -23,7 +23,7 @@
 
         var squareRoot = Math.floor(Math.sqrt(numPuzzlePieces));
 
-        if (numPuzzlePieces % squareRoot !== 0) {
+        if (numPuzzlePieces % squareRoot !== 0 || numPuzzlePieces < 16) {
             numPuzzlePiecesInput.setCustomValidity("Incorrect number or less than 16");
         } else {
             numPuzzlePiecesInput.setCustomValidity("");

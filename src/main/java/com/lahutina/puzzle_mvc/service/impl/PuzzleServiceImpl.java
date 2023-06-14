@@ -245,7 +245,7 @@ public class PuzzleServiceImpl implements PuzzleService {
         int[] secondArrayPixels = getSidePixels(image2, image2Side);
 
         // check color similarity between the pixels
-        double colorDifferenceThreshold = 55.0;
+        double colorDifferenceThreshold = 60.0;
         return !areColumnsSimilar(firstArrayPixels, secondArrayPixels, colorDifferenceThreshold);
     }
 
